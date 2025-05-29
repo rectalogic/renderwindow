@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (C) 2023 Andrew Wason
+# Copyright (C) 2025 Andrew Wason
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set -u
@@ -19,15 +19,6 @@ INSTALLDIR=${QTDIR%/*/*}
         --auto-answer telemetry-question=No --no-default-installations --no-force-installations \
         install \
         qt.${QTSPEC}.clang_64 \
-        qt.${QTSPEC}.addons.qtquick3d \
-        qt.${QTSPEC}.addons.qtquicktimeline \
-        qt.${QTSPEC}.addons.qtpositioning \
-        qt.${QTSPEC}.addons.qtwebchannel \
-        extensions.qtwebengine.${QT_VER_NODOT}.clang_64 \
-        qt.${QTSPEC}.addons.qtmultimedia \
-        qt.${QTSPEC}.addons.qtshadertools \
-        qt.${QTSPEC}.addons.qtquickeffectmaker \
-        qt.tools.qtcreator_gui \
     && hdiutil detach /Volumes/${INSTALLER} \
     && find "${INSTALLDIR}/Docs/Qt-${QT_VER}" -type f -and -not -name '*.index' -delete
 )

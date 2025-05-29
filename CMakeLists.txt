@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(renderwindow VERSION 1.0.0 LANGUAGES CXX)
 
-find_package(Qt6 6.9 REQUIRED COMPONENTS Core Gui Qml Quick QUIET)
+find_package(Qt6 6.9 REQUIRED COMPONENTS Core Gui Qml Quick)
 
 qt_standard_project_setup(REQUIRES 6.9)
 qt_policy(SET QTP0001 NEW)
