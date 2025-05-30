@@ -6,5 +6,6 @@ MOUNT="$(cd "${BASH_SOURCE%/*}/../.."; pwd)"
 
 # opengl or vulkan
 TARGET=${TARGET:-opengl}
+TAG=${TAG:-ghcr.io/rectalogic/renderwindow:${UBUNTU:-noble}-$(git branch --show-current)}
 docker run ${DOCKER_OPTS} -e QSG_RHI_BACKEND=${TARGET} --rm --init \
-    --mount="type=bind,src=${MOUNT},dst=/renderwindow,consistency=cached" ghcr.io/rectalogic/renderwindow:${UBUNTU:-noble}-$(git branch --show-current) "$@"
+    --mount="type=bind,src=${MOUNT},dst=/renderwindow,consistency=cached" ${TAG} "$@"

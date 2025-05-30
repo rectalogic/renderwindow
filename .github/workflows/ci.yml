@@ -72,12 +72,14 @@ jobs:
         run: |
           export TARGET=opengl
           export UBUNTU=${{ matrix.ubuntu }}
+          export TAG=ghcr.io/rectalogic/renderwindow:${UBUNTU}-${{ github.ref_name }}
           builders/Linux/docker-run.sh
       - name: Build renderwindow vulkan
         if: matrix.ubuntu == 'noble'
         run: |
           export TARGET=vulkan
           export UBUNTU=${{ matrix.ubuntu }}
+          export TAG=ghcr.io/rectalogic/renderwindow:${UBUNTU}-${{ github.ref_name }}
           builders/Linux/docker-run.sh
       - name: Archive
         id: archive
