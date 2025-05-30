@@ -3,7 +3,7 @@
 
 qt_add_qml_module(renderwindow
     PLUGIN_TARGET renderwindow
-    URI com.rectalogic.RenderWindow
+    URI MediaFX.RenderWindow
     SOURCES
     render_control.cpp
     render_window.cpp

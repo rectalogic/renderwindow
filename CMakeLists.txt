@@ -20,4 +20,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_compile_options($<$<CONFIG:Debug>:-fsanitize=address>)
 add_link_options($<$<CONFIG:Debug>:-fsanitize=address>)
 
-add_subdirectory(com/rectalogic/RenderWindow)
+add_subdirectory(MediaFX/RenderWindow)
