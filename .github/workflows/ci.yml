@@ -147,4 +147,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: lint
-        run: builders/Linux/docker-run.sh /renderwindow/builders/Linux/lint.sh
+        run: |
+          export UBUNTU=noble
+          export TAG=ghcr.io/rectalogic/renderwindow:${UBUNTU}-${{ github.ref_name }}
+          builders/Linux/docker-run.sh /renderwindow/builders/Linux/lint.sh
