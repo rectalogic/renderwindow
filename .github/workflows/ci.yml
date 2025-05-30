@@ -57,6 +57,8 @@ jobs:
   linux:
     runs-on: ubuntu-24.04
     needs: docker
+    permissions:
+      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -75,9 +77,23 @@ jobs:
           export TARGET=vulkan
           export UBUNTU=${{ matrix.ubuntu }}
           builders/Linux/docker-run.sh
+      - name: Archive
+        id: archive
+        if: github.ref_type == 'tag' && matrix.ubuntu == 'noble'
+        run: |
+          ARCHIVE=renderwindow-${{ matrix.ubuntu }}-${{ github.ref_name }}.tgz
+          tar czvf $ARCHIVE -C build/Linux/Release/installed/qml .
+          echo "file=$ARCHIVE" >> $GITHUB_OUTPUT
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag' && matrix.ubuntu == 'noble'
+        with:
+          files: ${{ steps.archive.outputs.file }}
 
   macos:
     runs-on: macos-15
+    permissions:
+      contents: write
     env:
       XCODE_VER: "16.3"
     steps:
@@ -107,6 +123,18 @@ jobs:
       - name: Build renderwindow
         run: |
           builders/renderwindow-build.sh
+      - name: Archive
+        id: archive
+        if: github.ref_type == 'tag'
+        run: |
+          ARCHIVE=renderwindow-macos-${{ github.ref_name }}.zip
+          env -C build/Darwin/Release/installed/qml zip -r "$PWD/$ARCHIVE" .
+          echo "file=$ARCHIVE" >> $GITHUB_OUTPUT
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: github.ref_type == 'tag'
+        with:
+          files: ${{ steps.archive.outputs.file }}
 
   lint:
     runs-on: ubuntu-24.04
