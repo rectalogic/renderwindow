@@ -83,17 +83,18 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=en_US.UTF-8
 ENV LC_ALL=C.UTF-8
 RUN <<EOF
-    if [ "${UBUNTU}" = "noble" ]; then
-        EXTRA_PKGS="clang-format clang-tidy clazy iwyu"
-    fi
     apt-get -y update && apt-get -y install \
         bash \
         build-essential \
+        clang-format \
+        clang-tidy \
+        clazy \
         ffmpeg \
         fontconfig \
         fonts-liberation \
         git \
         gosu \
+        iwyu \
         libavcodec-dev \
         libavfilter-dev \
         libavformat-dev \
@@ -117,7 +118,7 @@ RUN <<EOF
         python3-pip \
         sudo \
         xvfb \
-        xz-utils ${EXTRA_PKGS}
+        xz-utils
 EOF
 
 RUN curl -L https://github.com/Kitware/CMake/releases/download/v3.29.2/cmake-3.29.2-linux-$(uname --machine).tar.gz | tar xfz - --strip-components=1 -C /usr/local

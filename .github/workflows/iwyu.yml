@@ -1,0 +1,12 @@
+name: IWYU
+on:
+  workflow_dispatch:
+
+jobs:
+  iwyu:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: iwyu
+        run: builders/Linux/docker-run.sh /renderwindow/builders/Linux/iwyu.sh
