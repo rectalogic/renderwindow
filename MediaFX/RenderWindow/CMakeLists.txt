@@ -18,19 +18,16 @@ qt_query_qml_module(renderwindow
     TYPEINFO renderwindow_typeinfo
 )
 
-set(release_dir "Release/qml/${renderwindow_target_path}")
+set(install_dir "qml/${renderwindow_target_path}")
 install(TARGETS "${renderwindow_plugin_target}"
-    CONFIGURATIONS Release
-    LIBRARY DESTINATION "${release_dir}"
-    RUNTIME DESTINATION "${release_dir}"
+    LIBRARY DESTINATION "${install_dir}"
+    RUNTIME DESTINATION "${install_dir}"
 )
 install(FILES
-    CONFIGURATIONS Release
     "${renderwindow_qmldir}"
-    DESTINATION "${release_dir}"
+    DESTINATION "${install_dir}"
 )
 install(FILES
-    CONFIGURATIONS Release
     "${renderwindow_typeinfo}"
-    DESTINATION "${release_dir}"
+    DESTINATION "${install_dir}"
 )
