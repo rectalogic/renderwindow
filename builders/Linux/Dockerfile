@@ -86,7 +86,7 @@ RUN <<EOF
     apt-get -y update && apt-get -y install \
         bash \
         build-essential \
-        clang-format \
+        clang-format-17 \
         clang-tidy \
         clazy \
         ffmpeg \

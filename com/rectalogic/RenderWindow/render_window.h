@@ -10,6 +10,7 @@
 #include <QtQmlIntegration>
 #include <memory>
 #include <qtgui-config.h>
+class AnimationDriver;
 class RenderControl;
 #if (QT_CONFIG(vulkan) && __has_include(<vulkan/vulkan.h>))
 #define RENDERWINDOW_ENABLE_VULKAN
@@ -32,7 +33,7 @@ public:
     RenderWindow& operator=(RenderWindow&&) = delete;
     ~RenderWindow() override;
 
-    Q_INVOKABLE QByteArray render();
+    Q_INVOKABLE QByteArray render(qint64 elapsedMillis);
 
 protected:
     void classBegin() override { }
@@ -47,5 +48,6 @@ private:
     QVulkanInstance m_vulkanInstance;
 #endif
     std::unique_ptr<RenderControl> m_renderControl;
+    std::unique_ptr<AnimationDriver> m_animationDriver;
     bool m_isValid = false;
 };

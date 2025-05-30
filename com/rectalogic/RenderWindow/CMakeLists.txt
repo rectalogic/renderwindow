@@ -10,7 +10,3 @@ qt_add_qml_module(renderwindow
 )
 
 target_link_libraries(renderwindow PUBLIC Qt6::Core Qt6::Gui Qt6::GuiPrivate Qt6::Qml Qt6::Quick)
-
-set_target_properties(renderwindow PROPERTIES
-    COMPONENT "${CMAKE_INSTALL_DEFAULT_COMPONENT_NAME}"
-)

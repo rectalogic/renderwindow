@@ -14,6 +14,9 @@ cd /renderwindow
 git config --global --add safe.directory /renderwindow
 FILES=$(git ls-files '**/*.cpp' '**/*.h')
 
+echo clang-format
+/usr/bin/clang-format-17 --dry-run --Werror $FILES || exit 1
+
 echo clang-tidy
 CLANGTIDY=$(/usr/bin/clang-tidy --quiet -p "${RENDERWINDOW_BUILD}" $FILES 2>&1 || exit 1)
 # Manually suppress bogus error https://github.com/llvm/llvm-project/issues/58820

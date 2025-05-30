@@ -114,9 +114,5 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: clang-format
-        uses: jidicula/clang-format-action@v4.15.0
-        with:
-          clang-format-version: "17"
-      - name: clang-tidy/clazy
+      - name: lint
         run: builders/Linux/docker-run.sh /renderwindow/builders/Linux/lint.sh
