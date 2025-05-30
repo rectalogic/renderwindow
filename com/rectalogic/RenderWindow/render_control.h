@@ -13,7 +13,7 @@ class RenderControl : public QQuickRenderControl {
     Q_OBJECT
 public:
     RenderControl(QObject* parent = nullptr)
-        : QQuickRenderControl(parent) {};
+        : QQuickRenderControl(parent) { };
     RenderControl(RenderControl&&) = delete;
     RenderControl& operator=(RenderControl&&) = delete;
     ~RenderControl() override = default;

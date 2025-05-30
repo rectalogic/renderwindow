@@ -6,9 +6,9 @@
 #include <QDebug>
 #include <QMessageLogContext>
 #include <QQmlEngine>
-#include <QQmlInfo>
+#include <QQmlTypeNotAvailable>
 #include <QQuickItem>
-#ifdef MEDIAFX_ENABLE_VULKAN
+#ifdef RENDERWINDOW_ENABLE_VULKAN
 #include <QQuickGraphicsConfiguration>
 #include <QSGRendererInterface>
 #include <QVersionNumber>

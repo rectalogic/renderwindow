@@ -9,8 +9,6 @@ BUILD_TYPE=${BUILD_TYPE:-Debug}
 RENDERWINDOW_BUILD=${BUILD_ROOT}/${BUILD_TYPE}
 mkdir -p "${RENDERWINDOW_BUILD}"
 cmake -S "${SOURCE_ROOT}" -B "$RENDERWINDOW_BUILD" -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=${BUILD_TYPE} --install-prefix ${QTDIR} || exit 1
-# Generate *.moc include files for tests
-cmake --build "${RENDERWINDOW_BUILD}" --target tst_encoder_autogen/fast tst_decoder_autogen/fast tst_interval_autogen/fast || exit 1
 
 cd /renderwindow
 git config --global --add safe.directory /renderwindow

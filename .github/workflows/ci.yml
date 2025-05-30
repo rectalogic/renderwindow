@@ -79,7 +79,7 @@ jobs:
   macos:
     runs-on: macos-15
     env:
-      XCODE_VER: "16.4"
+      XCODE_VER: "16.3"
     steps:
       - name: Checkout
         uses: actions/checkout@v4

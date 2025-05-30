@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Copyright (C) 2023 Andrew Wason
+# Copyright (C) 2025 Andrew Wason
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 set -e

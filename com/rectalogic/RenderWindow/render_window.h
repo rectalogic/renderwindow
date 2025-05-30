@@ -2,14 +2,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
+#include <QByteArray>
 #include <QObject>
-#include <QPointer>
 #include <QQmlParserStatus>
 #include <QQuickWindow>
 #include <QtCore>
 #include <QtQmlIntegration>
 #include <memory>
 #include <qtgui-config.h>
+class RenderControl;
 #if (QT_CONFIG(vulkan) && __has_include(<vulkan/vulkan.h>))
 #define RENDERWINDOW_ENABLE_VULKAN
 #endif
@@ -42,7 +43,7 @@ private:
 
     RenderWindow(RenderControl* renderControl);
 
-#ifdef MEDIAFX_ENABLE_VULKAN
+#ifdef RENDERWINDOW_ENABLE_VULKAN
     QVulkanInstance m_vulkanInstance;
 #endif
     std::unique_ptr<RenderControl> m_renderControl;
