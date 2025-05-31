@@ -45,7 +45,8 @@ RenderWindow::RenderWindow()
     m_isValid = true;
 }
 
-RenderWindow::~RenderWindow() {
+RenderWindow::~RenderWindow()
+{
     if (m_animationDriver)
         m_animationDriver->uninstall();
 }

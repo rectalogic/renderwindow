@@ -21,3 +21,4 @@ add_compile_options($<$<CONFIG:Debug>:-fsanitize=address>)
 add_link_options($<$<CONFIG:Debug>:-fsanitize=address>)
 
 add_subdirectory(MediaFX/RenderWindow)
+add_subdirectory(tests)

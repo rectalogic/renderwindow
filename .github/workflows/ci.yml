@@ -74,6 +74,7 @@ jobs:
           export UBUNTU=${{ matrix.ubuntu }}
           export TAG=ghcr.io/rectalogic/renderwindow:${UBUNTU}-${{ github.ref_name }}
           builders/Linux/docker-run.sh
+          builders/Linux/docker-run.sh /renderwindow/builders/renderwindow-test.sh --verbose
       - name: Build renderwindow vulkan
         if: matrix.ubuntu == 'noble'
         run: |
@@ -81,6 +82,7 @@ jobs:
           export UBUNTU=${{ matrix.ubuntu }}
           export TAG=ghcr.io/rectalogic/renderwindow:${UBUNTU}-${{ github.ref_name }}
           builders/Linux/docker-run.sh
+          builders/Linux/docker-run.sh /renderwindow/builders/renderwindow-test.sh --verbose
       - name: Archive
         id: archive
         if: github.ref_type == 'tag' && matrix.ubuntu == 'noble'
@@ -127,6 +129,7 @@ jobs:
       - name: Build renderwindow
         run: |
           builders/renderwindow-build.sh
+          builders/renderwindow-test.sh --verbose
       - name: Archive
         id: archive
         if: github.ref_type == 'tag'
