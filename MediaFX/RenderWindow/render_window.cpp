@@ -45,7 +45,10 @@ RenderWindow::RenderWindow()
     m_isValid = true;
 }
 
-RenderWindow::~RenderWindow() = default;
+RenderWindow::~RenderWindow() {
+    if (m_animationDriver)
+        m_animationDriver->uninstall();
+}
 
 void RenderWindow::componentComplete()
 {
@@ -57,7 +60,6 @@ void RenderWindow::componentComplete()
 QByteArray RenderWindow::render(qint64 elapsedMillis)
 {
     if (!m_isValid) {
-        emit qmlEngine(this)->exit(1);
         return QByteArray();
     }
 
@@ -65,9 +67,5 @@ QByteArray RenderWindow::render(qint64 elapsedMillis)
     m_animationDriver->advance();
 
     QByteArray data = m_renderControl->renderFrame();
-    if (data.isNull()) {
-        emit qmlEngine(this)->exit(1);
-        return data;
-    }
     return data;
 }

@@ -5,8 +5,6 @@
 
 #include <QAnimationDriver>
 
-const qint32 FRAMERATE_MILLIS = 40;
-
 class AnimationDriver : public QAnimationDriver {
 public:
     AnimationDriver(QObject* parent = nullptr)
@@ -30,6 +28,5 @@ public:
     }
 
 private:
-    qint32 m_increment = 0;
     qint64 m_elapsed = 0;
 };
